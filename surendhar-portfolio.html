@@ -1,0 +1,1049 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Surendhar V — Data Science & ML Graduate | SRM IST Chennai" />
+    <title>Surendhar V — Data Scientist</title>
+    <meta name="keywords" content="Surendhar V, Data Science, Machine Learning, Python, SRM IST, Chennai" />
+    <meta name="author" content="Surendhar V" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Unicons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              gold: {
+                light: "#e7c88f",
+                DEFAULT: "#c18b13",
+                dark: "#a57811",
+              },
+              dark: {
+                DEFAULT: "#181818",
+                card: "#212121",
+                border: "#2e2e2e",
+              },
+              ivory: "#f5f5f0",
+            },
+            fontFamily: {
+              display: ["Syne", "sans-serif"],
+              body: ["DM Sans", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      body { font-family: "DM Sans", sans-serif; background: #181818; color: #f5f5f0; }
+      h1, h2, h3, h4, h5 { font-family: "Syne", sans-serif; }
+
+      /* ── Skill bars ── */
+      .skill-bar { height: 5px; background: #2e2e2e; border-radius: 9999px; overflow: hidden; }
+      .skill-fill { height: 100%; background: linear-gradient(90deg, #c18b13, #e7c88f); border-radius: 9999px; width: 0; transition: width 1.2s cubic-bezier(.4,0,.2,1); }
+
+      /* ── Nav mobile ── */
+      #nav-menu { transition: bottom 0.35s cubic-bezier(.4,0,.2,1); }
+      #nav-menu.show-menu { bottom: 0 !important; }
+
+      /* ── Active nav link ── */
+      .active-link { color: #c18b13 !important; }
+
+      /* ── Qual tabs ── */
+      .qual-content { display: none; }
+      .qual-content.qual-active { display: block; }
+      .qual-btn.qual-active { color: #c18b13; border-bottom: 2px solid #c18b13; }
+
+      /* ── Scroll up ── */
+      #scroll-up { opacity: 0; pointer-events: none; transition: 0.3s; }
+      #scroll-up.show-scroll { opacity: 1; pointer-events: auto; bottom: 5rem; }
+
+      /* ── Section fade-in ── */
+      .section-fade { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+      .section-fade.visible { opacity: 1; transform: none; }
+
+      /* ── Skill bar animate on visible ── */
+      .section-fade.visible .skill-fill { width: var(--w); }
+
+      /* ── Skills accordion ── */
+      .skills-list { overflow: hidden; transition: max-height 0.45s cubic-bezier(.4,0,.2,1); }
+      .skills-open .skills-list { max-height: 800px; }
+      .skills-close .skills-list { max-height: 0; }
+      .skills-open .skills-arrow { transform: rotate(180deg); }
+      .skills-arrow { transition: transform 0.4s; }
+
+      /* ── Gold text gradient ── */
+      .gold-text {
+        background: linear-gradient(135deg, #e7c88f, #c18b13);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* ── Pill tags ── */
+      .pill-tag {
+        display: inline-flex;
+        align-items: center;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        padding: 3px 10px;
+        border-radius: 9999px;
+        border: 1px solid #2e2e2e;
+        background: #212121;
+        color: rgba(245,245,240,0.6);
+        white-space: nowrap;
+      }
+
+      /* ── Cert card hover ── */
+      .cert-card { transition: border-color 0.25s, transform 0.25s; }
+      .cert-card:hover { border-color: #c18b13; transform: translateY(-3px); }
+
+      /* ── Project card ── */
+      .proj-card { transition: border-color 0.25s, transform 0.3s; }
+      .proj-card:hover { border-color: rgba(193,139,19,0.5); transform: translateY(-4px); }
+
+      /* ── Stat counter pulse ── */
+      @keyframes pulse-glow {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(193,139,19,0); }
+        50% { box-shadow: 0 0 18px 2px rgba(193,139,19,0.15); }
+      }
+      .stat-box { animation: pulse-glow 3s ease-in-out infinite; }
+
+      /* ── Mobile nav ── */
+      @media (max-width: 767px) {
+        #nav-menu {
+          position: fixed; bottom: -100%; left: 0; width: 100%;
+          background: #181818; padding: 2rem 1.5rem 4rem;
+          box-shadow: 0 -1px 4px rgba(0,0,0,0.4);
+          border-radius: 1.5rem 1.5rem 0 0; z-index: 200;
+        }
+      }
+
+      /* ── Desktop nav top ── */
+      @media (min-width: 768px) {
+        #header { top: 0; bottom: auto; }
+      }
+
+      /* ── Experience timeline dot ── */
+      .exp-dot {
+        position: absolute; left: -8px; top: 6px;
+        width: 14px; height: 14px; border-radius: 50%;
+        background: #c18b13; border: 3px solid #181818;
+        flex-shrink: 0;
+      }
+
+      /* ── Noise overlay ── */
+      body::before {
+        content: ""; pointer-events: none; position: fixed;
+        inset: 0; z-index: 1000;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+        opacity: 0.018; mix-blend-mode: overlay;
+      }
+    </style>
+  </head>
+
+  <body class="bg-dark text-ivory">
+
+    <!-- ═══════════ HEADER ═══════════ -->
+    <header
+      id="header"
+      class="fixed bottom-0 left-0 w-full bg-dark z-50 md:top-0 md:bottom-auto border-t border-dark-border md:border-t-0 md:border-b md:border-dark-border"
+    >
+      <nav class="max-w-5xl mx-auto px-4 h-12 flex items-center justify-between">
+        <a href="#" class="font-display font-bold text-lg text-ivory hover:text-gold transition-colors tracking-tight">
+          Surendhar<span class="text-gold">.</span>
+        </a>
+
+        <!-- Desktop nav -->
+        <ul class="hidden md:flex gap-6 text-sm font-medium">
+          <li><a href="#home"           class="nav__link hover:text-gold transition-colors active-link">Home</a></li>
+          <li><a href="#about"          class="nav__link hover:text-gold transition-colors">About</a></li>
+          <li><a href="#skills"         class="nav__link hover:text-gold transition-colors">Skills</a></li>
+          <li><a href="#qualifications" class="nav__link hover:text-gold transition-colors">Experience</a></li>
+          <li><a href="#portfolio"      class="nav__link hover:text-gold transition-colors">Projects</a></li>
+          <li><a href="#certifications" class="nav__link hover:text-gold transition-colors">Certs</a></li>
+          <li><a href="#contact"        class="nav__link hover:text-gold transition-colors">Contact</a></li>
+        </ul>
+
+        <!-- Mobile toggle -->
+        <div id="nav-toggle" class="md:hidden text-ivory text-xl cursor-pointer">
+          <i class="uil uil-apps"></i>
+        </div>
+      </nav>
+
+      <!-- Mobile menu -->
+      <div id="nav-menu" class="md:hidden">
+        <ul class="grid grid-cols-3 gap-6 text-center">
+          <li><a href="#home"           class="nav__link flex flex-col items-center gap-1 text-xs font-medium text-ivory hover:text-gold transition-colors"><i class="uil uil-estate text-xl"></i>Home</a></li>
+          <li><a href="#about"          class="nav__link flex flex-col items-center gap-1 text-xs font-medium text-ivory hover:text-gold transition-colors"><i class="uil uil-user text-xl"></i>About</a></li>
+          <li><a href="#skills"         class="nav__link flex flex-col items-center gap-1 text-xs font-medium text-ivory hover:text-gold transition-colors"><i class="uil uil-chart text-xl"></i>Skills</a></li>
+          <li><a href="#qualifications" class="nav__link flex flex-col items-center gap-1 text-xs font-medium text-ivory hover:text-gold transition-colors"><i class="uil uil-briefcase-alt text-xl"></i>Exp</a></li>
+          <li><a href="#portfolio"      class="nav__link flex flex-col items-center gap-1 text-xs font-medium text-ivory hover:text-gold transition-colors"><i class="uil uil-scenery text-xl"></i>Projects</a></li>
+          <li><a href="#certifications" class="nav__link flex flex-col items-center gap-1 text-xs font-medium text-ivory hover:text-gold transition-colors"><i class="uil uil-award text-xl"></i>Certs</a></li>
+          <li><a href="#contact"        class="nav__link flex flex-col items-center gap-1 text-xs font-medium text-ivory hover:text-gold transition-colors"><i class="uil uil-envelope text-xl"></i>Contact</a></li>
+        </ul>
+        <i class="uil uil-times absolute right-5 bottom-4 text-2xl text-gold cursor-pointer" id="nav-close"></i>
+      </div>
+    </header>
+
+    <main class="mb-12 md:mb-0 md:mt-12">
+
+      <!-- ═══════════ HOME ═══════════ -->
+      <section id="home" class="min-h-screen flex items-center section-fade px-4 relative overflow-hidden">
+        <!-- Background glows -->
+        <div class="absolute top-20 right-0 w-96 h-96 rounded-full bg-gold/5 blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-20 left-0 w-64 h-64 rounded-full bg-gold/3 blur-2xl pointer-events-none"></div>
+
+        <!-- Vertical label -->
+        <div class="hidden lg:flex absolute right-6 top-1/2 -translate-y-1/2 flex-col items-center gap-3">
+          <div class="w-px h-16 bg-dark-border"></div>
+          <span class="text-ivory/20 text-[10px] tracking-[0.3em] uppercase rotate-90 whitespace-nowrap">Data Science · ML</span>
+          <div class="w-px h-16 bg-dark-border"></div>
+        </div>
+
+        <div class="max-w-5xl mx-auto w-full py-24 md:py-32">
+          <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+            <!-- LEFT — Stats Grid -->
+            <div class="order-2 md:order-1 flex justify-center md:justify-start">
+              <div class="relative w-full max-w-sm">
+                <!-- Glow ring -->
+                <div class="absolute -inset-3 rounded-3xl bg-gradient-to-br from-gold/20 via-transparent to-gold/8 blur-sm"></div>
+                <!-- Stats grid card -->
+                <div class="relative bg-dark-card border border-dark-border rounded-3xl p-6 space-y-3">
+                  <p class="text-ivory/30 text-[10px] tracking-[0.25em] uppercase font-semibold mb-4">At a glance</p>
+                  <div class="grid grid-cols-2 gap-3">
+                    <div class="stat-box bg-dark border border-dark-border rounded-2xl p-4 text-center">
+                      <p class="font-display font-bold text-2xl text-gold">8.75</p>
+                      <p class="text-ivory/40 text-[11px] mt-0.5">CGPA — M.Sc</p>
+                    </div>
+                    <div class="stat-box bg-dark border border-dark-border rounded-2xl p-4 text-center">
+                      <p class="font-display font-bold text-2xl text-gold">2</p>
+                      <p class="text-ivory/40 text-[11px] mt-0.5">Active Internships</p>
+                    </div>
+                    <div class="stat-box bg-dark border border-dark-border rounded-2xl p-4 text-center">
+                      <p class="font-display font-bold text-2xl text-gold">6</p>
+                      <p class="text-ivory/40 text-[11px] mt-0.5">Certifications</p>
+                    </div>
+                    <div class="stat-box bg-dark border border-dark-border rounded-2xl p-4 text-center">
+                      <p class="font-display font-bold text-2xl text-gold">RL</p>
+                      <p class="text-ivory/40 text-[11px] mt-0.5">Hackathon R1 ✓</p>
+                    </div>
+                  </div>
+                  <!-- Tech chips -->
+                  <div class="flex flex-wrap gap-1.5 pt-3 border-t border-dark-border">
+                    <span class="pill-tag">Python</span>
+                    <span class="pill-tag">SQL</span>
+                    <span class="pill-tag">Power BI</span>
+                    <span class="pill-tag">Tableau</span>
+                    <span class="pill-tag">FastAPI</span>
+                    <span class="pill-tag">Docker</span>
+                    <span class="pill-tag">HuggingFace</span>
+                    <span class="pill-tag">scikit-learn</span>
+                  </div>
+                </div>
+
+                <!-- Floating badge — availability -->
+                <div class="absolute -top-4 -left-4 bg-dark-card border border-dark-border rounded-2xl px-4 py-2.5 shadow-xl flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                  <p class="text-ivory/70 text-[11px] font-medium">Open to opportunities</p>
+                </div>
+
+                <!-- Floating badge — location -->
+                <div class="absolute -bottom-4 -right-4 bg-dark-card border border-dark-border rounded-2xl px-4 py-3 shadow-xl">
+                  <p class="font-display font-bold text-gold text-sm leading-none">Chennai</p>
+                  <p class="text-ivory/50 text-[11px] mt-0.5">Tamil Nadu, India</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT — Content -->
+            <div class="order-1 md:order-2">
+              <!-- Tag line -->
+              <div class="flex items-center gap-3 mb-7">
+                <div class="w-8 h-px bg-gold"></div>
+                <span class="text-gold text-xs font-semibold tracking-[0.22em] uppercase">Portfolio</span>
+              </div>
+
+              <h1 class="font-display font-extrabold text-4xl md:text-5xl lg:text-6xl leading-[1.1] mb-4">
+                Hello, I'm<br />
+                <span class="gold-text">Surendhar V</span>
+              </h1>
+
+              <h3 class="text-ivory/50 text-base md:text-lg font-light mb-5 tracking-wide">
+                M.Sc Applied Data Science · SRM IST, Chennai
+              </h3>
+
+              <p class="text-ivory/65 text-sm leading-[1.85] mb-8 max-w-md">
+                Detail-oriented data science graduate student with hands-on experience in machine learning, EDA, and analytics. Transforming complex datasets into clear, actionable business insights.
+              </p>
+
+              <!-- CTA buttons -->
+              <div class="flex flex-wrap gap-3 mb-10">
+                <a href="#contact" class="inline-flex items-center gap-2 bg-gold hover:bg-gold-dark text-dark font-semibold text-sm px-6 py-3 rounded-xl transition-all hover:shadow-lg hover:shadow-gold/20">
+                  Get in Touch <i class="uil uil-message text-base"></i>
+                </a>
+                <a href="#portfolio" class="inline-flex items-center gap-2 border border-gold/50 text-gold hover:bg-gold hover:text-dark hover:border-gold font-semibold text-sm px-6 py-3 rounded-xl transition-all">
+                  View Projects <i class="uil uil-arrow-right text-base"></i>
+                </a>
+              </div>
+
+              <!-- Social links -->
+              <div class="flex items-center gap-3">
+                <span class="text-ivory/25 text-xs tracking-widest uppercase mr-1">Find me</span>
+                <a href="https://linkedin.com/in/surendhar0309" target="_blank"
+                   class="w-9 h-9 border border-dark-border rounded-lg flex items-center justify-center text-gold hover:bg-gold hover:text-dark hover:border-gold transition-all">
+                  <i class="uil uil-linkedin-alt text-lg"></i>
+                </a>
+                <a href="https://github.com/Surendhar0309" target="_blank"
+                   class="w-9 h-9 border border-dark-border rounded-lg flex items-center justify-center text-gold hover:bg-gold hover:text-dark hover:border-gold transition-all">
+                  <i class="uil uil-github-alt text-lg"></i>
+                </a>
+                <a href="mailto:ksurendhar95@gmail.com"
+                   class="w-9 h-9 border border-dark-border rounded-lg flex items-center justify-center text-gold hover:bg-gold hover:text-dark hover:border-gold transition-all">
+                  <i class="uil uil-envelope text-lg"></i>
+                </a>
+              </div>
+
+              <!-- Scroll cue -->
+              <a href="#about" class="inline-flex items-center gap-2 text-ivory/30 hover:text-gold text-xs mt-12 transition-all hover:gap-3">
+                <i class="uil uil-mouse-alt text-xl"></i>
+                <span class="font-medium tracking-wider uppercase">Scroll down</span>
+                <i class="uil uil-arrow-down text-sm"></i>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ ABOUT ═══════════ -->
+      <section id="about" class="py-20 px-4 section-fade">
+        <div class="max-w-5xl mx-auto">
+          <p class="text-gold text-sm font-medium tracking-widest uppercase mb-2">Get to know me</p>
+          <h2 class="font-display font-bold text-4xl md:text-5xl mb-14">About Me</h2>
+
+          <div class="grid md:grid-cols-2 gap-12 items-start">
+
+            <!-- Left — bio & stats -->
+            <div>
+              <p class="text-ivory/70 leading-relaxed mb-6">
+                I'm a graduate student in <span class="text-gold font-semibold">M.Sc Applied Data Science</span> at SRM Institute of Science and Technology, Chennai, with a B.Sc. in Mathematics — giving me a strong quantitative foundation for every problem I tackle.
+              </p>
+              <p class="text-ivory/70 leading-relaxed mb-8">
+                My work spans the full data science pipeline — EDA, feature engineering, model training, and deployment — with a focus on communicating results through dashboards and visualizations. I participate in ML hackathons and deploy open-source projects on GitHub and Hugging Face Spaces.
+              </p>
+
+              <div class="flex gap-8 mb-8">
+                <div class="text-center">
+                  <p class="font-display font-bold text-3xl text-gold">8.75</p>
+                  <p class="text-ivory/50 text-sm mt-1">CGPA M.Sc</p>
+                </div>
+                <div class="w-px bg-dark-border"></div>
+                <div class="text-center">
+                  <p class="font-display font-bold text-3xl text-gold">2</p>
+                  <p class="text-ivory/50 text-sm mt-1">Internships</p>
+                </div>
+                <div class="w-px bg-dark-border"></div>
+                <div class="text-center">
+                  <p class="font-display font-bold text-3xl text-gold">6</p>
+                  <p class="text-ivory/50 text-sm mt-1">Certifications</p>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap gap-3">
+                <a href="https://github.com/Surendhar0309" target="_blank"
+                   class="inline-flex items-center gap-2 bg-gold hover:bg-gold-dark text-dark font-semibold px-6 py-3 rounded-lg transition-colors text-sm">
+                  GitHub Profile <i class="uil uil-github-alt text-lg"></i>
+                </a>
+                <a href="https://huggingface.co/Surendhar4518" target="_blank"
+                   class="inline-flex items-center gap-2 border border-dark-border hover:border-gold text-ivory/70 hover:text-gold font-semibold px-6 py-3 rounded-lg transition-colors text-sm">
+                  Hugging Face <i class="uil uil-external-link-alt text-lg"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Right — about cards -->
+            <div class="space-y-4">
+              <div class="bg-dark-card border border-dark-border rounded-2xl p-5 hover:border-gold/40 transition-colors">
+                <div class="flex items-start gap-4">
+                  <div class="w-10 h-10 bg-dark border border-dark-border rounded-xl flex items-center justify-center text-gold text-xl shrink-0">
+                    <i class="uil uil-graduation-cap"></i>
+                  </div>
+                  <div>
+                    <p class="font-display font-semibold text-sm mb-0.5">M.Sc, Applied Data Science</p>
+                    <p class="text-ivory/50 text-xs leading-relaxed">SRM Institute of Science & Technology, Chennai · CGPA 8.75 / 10 · 2025–2027</p>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-dark-card border border-dark-border rounded-2xl p-5 hover:border-gold/40 transition-colors">
+                <div class="flex items-start gap-4">
+                  <div class="w-10 h-10 bg-dark border border-dark-border rounded-xl flex items-center justify-center text-gold text-xl shrink-0">
+                    <i class="uil uil-calculator-alt"></i>
+                  </div>
+                  <div>
+                    <p class="font-display font-semibold text-sm mb-0.5">B.Sc, Mathematics</p>
+                    <p class="text-ivory/50 text-xs leading-relaxed">Arignar Anna Government Arts College, Cheyyar · CGPA 7.06 / 10 · 2022–2025</p>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-dark-card border border-dark-border rounded-2xl p-5 hover:border-gold/40 transition-colors">
+                <div class="flex items-start gap-4">
+                  <div class="w-10 h-10 bg-dark border border-dark-border rounded-xl flex items-center justify-center text-gold text-xl shrink-0">
+                    <i class="uil uil-trophy"></i>
+                  </div>
+                  <div>
+                    <p class="font-display font-semibold text-sm mb-0.5">Meta × Scaler OpenEnv Hackathon</p>
+                    <p class="text-ivory/50 text-xs leading-relaxed">Solo participant — RL environment built & deployed · Round 1 accepted ✓</p>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-dark-card border border-dark-border rounded-2xl p-5 hover:border-gold/40 transition-colors">
+                <div class="flex items-start gap-4">
+                  <div class="w-10 h-10 bg-dark border border-dark-border rounded-xl flex items-center justify-center text-gold text-xl shrink-0">
+                    <i class="uil uil-github-alt"></i>
+                  </div>
+                  <div>
+                    <p class="font-display font-semibold text-sm mb-0.5">Open Source</p>
+                    <p class="text-ivory/50 text-xs leading-relaxed">GitHub: Surendhar0309 · Hugging Face: Surendhar4518</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ SKILLS ═══════════ -->
+      <section id="skills" class="py-20 px-4 section-fade">
+        <div class="max-w-5xl mx-auto">
+          <p class="text-gold text-sm font-medium tracking-widest uppercase mb-2">What I know</p>
+          <h2 class="font-display font-bold text-4xl md:text-5xl mb-14">Skills</h2>
+
+          <div class="grid md:grid-cols-3 gap-6">
+
+            <!-- Languages -->
+            <div class="skills-open bg-dark-card border border-dark-border rounded-2xl p-6">
+              <div class="skills__header flex items-center gap-3 mb-6 cursor-pointer select-none">
+                <i class="uil uil-code-branch text-gold text-2xl"></i>
+                <div class="flex-1">
+                  <h3 class="font-display font-semibold text-base">Languages</h3>
+                  <p class="text-ivory/40 text-xs">Programming</p>
+                </div>
+                <i class="uil uil-angle-down skills-arrow text-gold text-xl"></i>
+              </div>
+              <div class="skills-list space-y-4">
+                <div>
+                  <div class="flex justify-between text-sm mb-1"><span>Python</span><span class="text-gold">95%</span></div>
+                  <div class="skill-bar"><div class="skill-fill" style="--w:95%"></div></div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-sm mb-1"><span>SQL</span><span class="text-gold">85%</span></div>
+                  <div class="skill-bar"><div class="skill-fill" style="--w:85%"></div></div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-sm mb-1"><span>R</span><span class="text-gold">65%</span></div>
+                  <div class="skill-bar"><div class="skill-fill" style="--w:65%"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Data Science & ML -->
+            <div class="skills-open bg-dark-card border border-dark-border rounded-2xl p-6">
+              <div class="skills__header flex items-center gap-3 mb-6 cursor-pointer select-none">
+                <i class="uil uil-atom text-gold text-2xl"></i>
+                <div class="flex-1">
+                  <h3 class="font-display font-semibold text-base">Data Science & ML</h3>
+                  <p class="text-ivory/40 text-xs">Models & Analysis</p>
+                </div>
+                <i class="uil uil-angle-down skills-arrow text-gold text-xl"></i>
+              </div>
+              <div class="skills-list space-y-4">
+                <div>
+                  <div class="flex justify-between text-sm mb-1"><span>Machine Learning</span><span class="text-gold">88%</span></div>
+                  <div class="skill-bar"><div class="skill-fill" style="--w:88%"></div></div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-sm mb-1"><span>scikit-learn</span><span class="text-gold">85%</span></div>
+                  <div class="skill-bar"><div class="skill-fill" style="--w:85%"></div></div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-sm mb-1"><span>EDA & Statistics</span><span class="text-gold">90%</span></div>
+                  <div class="skill-bar"><div class="skill-fill" style="--w:90%"></div></div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-sm mb-1"><span>Reinforcement Learning</span><span class="text-gold">70%</span></div>
+                  <div class="skill-bar"><div class="skill-fill" style="--w:70%"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Visualization & Tools -->
+            <div class="skills-open bg-dark-card border border-dark-border rounded-2xl p-6">
+              <div class="skills__header flex items-center gap-3 mb-6 cursor-pointer select-none">
+                <i class="uil uil-chart-bar text-gold text-2xl"></i>
+                <div class="flex-1">
+                  <h3 class="font-display font-semibold text-base">Visualization</h3>
+                  <p class="text-ivory/40 text-xs">Dashboards & Plots</p>
+                </div>
+                <i class="uil uil-angle-down skills-arrow text-gold text-xl"></i>
+              </div>
+              <div class="skills-list space-y-4">
+                <div>
+                  <div class="flex justify-between text-sm mb-1"><span>Power BI</span><span class="text-gold">85%</span></div>
+                  <div class="skill-bar"><div class="skill-fill" style="--w:85%"></div></div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-sm mb-1"><span>Tableau</span><span class="text-gold">80%</span></div>
+                  <div class="skill-bar"><div class="skill-fill" style="--w:80%"></div></div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-sm mb-1"><span>Matplotlib / Seaborn</span><span class="text-gold">88%</span></div>
+                  <div class="skill-bar"><div class="skill-fill" style="--w:88%"></div></div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-sm mb-1"><span>Google Analytics</span><span class="text-gold">72%</span></div>
+                  <div class="skill-bar"><div class="skill-fill" style="--w:72%"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Frameworks & APIs -->
+            <div class="skills-open bg-dark-card border border-dark-border rounded-2xl p-6">
+              <div class="skills__header flex items-center gap-3 mb-6 cursor-pointer select-none">
+                <i class="uil uil-server text-gold text-2xl"></i>
+                <div class="flex-1">
+                  <h3 class="font-display font-semibold text-base">Frameworks & APIs</h3>
+                  <p class="text-ivory/40 text-xs">Dev & Deploy</p>
+                </div>
+                <i class="uil uil-angle-down skills-arrow text-gold text-xl"></i>
+              </div>
+              <div class="skills-list space-y-4">
+                <div>
+                  <div class="flex justify-between text-sm mb-1"><span>FastAPI</span><span class="text-gold">82%</span></div>
+                  <div class="skill-bar"><div class="skill-fill" style="--w:82%"></div></div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-sm mb-1"><span>Docker</span><span class="text-gold">75%</span></div>
+                  <div class="skill-bar"><div class="skill-fill" style="--w:75%"></div></div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-sm mb-1"><span>Hugging Face</span><span class="text-gold">78%</span></div>
+                  <div class="skill-bar"><div class="skill-fill" style="--w:78%"></div></div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-sm mb-1"><span>OpenAI API</span><span class="text-gold">72%</span></div>
+                  <div class="skill-bar"><div class="skill-fill" style="--w:72%"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mathematics -->
+            <div class="skills-open bg-dark-card border border-dark-border rounded-2xl p-6">
+              <div class="skills__header flex items-center gap-3 mb-6 cursor-pointer select-none">
+                <i class="uil uil-sigma text-gold text-2xl"></i>
+                <div class="flex-1">
+                  <h3 class="font-display font-semibold text-base">Mathematics</h3>
+                  <p class="text-ivory/40 text-xs">Foundations</p>
+                </div>
+                <i class="uil uil-angle-down skills-arrow text-gold text-xl"></i>
+              </div>
+              <div class="skills-list space-y-4">
+                <div>
+                  <div class="flex justify-between text-sm mb-1"><span>Statistics & Probability</span><span class="text-gold">92%</span></div>
+                  <div class="skill-bar"><div class="skill-fill" style="--w:92%"></div></div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-sm mb-1"><span>Linear Algebra</span><span class="text-gold">85%</span></div>
+                  <div class="skill-bar"><div class="skill-fill" style="--w:85%"></div></div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-sm mb-1"><span>Bayesian Theory</span><span class="text-gold">80%</span></div>
+                  <div class="skill-bar"><div class="skill-fill" style="--w:80%"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Soft Skills -->
+            <div class="skills-open bg-dark-card border border-dark-border rounded-2xl p-6">
+              <div class="skills__header flex items-center gap-3 mb-6 cursor-pointer select-none">
+                <i class="uil uil-users-alt text-gold text-2xl"></i>
+                <div class="flex-1">
+                  <h3 class="font-display font-semibold text-base">Soft Skills</h3>
+                  <p class="text-ivory/40 text-xs">People & Process</p>
+                </div>
+                <i class="uil uil-angle-down skills-arrow text-gold text-xl"></i>
+              </div>
+              <div class="skills-list space-y-4">
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  <span class="pill-tag">Analytical Thinking</span>
+                  <span class="pill-tag">Problem Solving</span>
+                  <span class="pill-tag">Team Collaboration</span>
+                  <span class="pill-tag">Communication</span>
+                  <span class="pill-tag">Attention to Detail</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ QUALIFICATIONS / EXPERIENCE ═══════════ -->
+      <section id="qualifications" class="py-20 px-4 section-fade">
+        <div class="max-w-5xl mx-auto">
+          <p class="text-gold text-sm font-medium tracking-widest uppercase mb-2">My journey</p>
+          <h2 class="font-display font-bold text-4xl md:text-5xl mb-12">Experience</h2>
+
+          <!-- Tabs -->
+          <div class="flex gap-6 mb-10 border-b border-dark-border">
+            <button data-target="work"
+              class="qual-btn qual-active pb-3 font-display font-semibold text-base flex items-center gap-2 transition-colors">
+              <i class="uil uil-briefcase-alt text-xl"></i> Work
+            </button>
+            <button data-target="education"
+              class="qual-btn pb-3 font-display font-semibold text-base text-ivory/50 flex items-center gap-2 transition-colors hover:text-gold">
+              <i class="uil uil-graduation-cap text-xl"></i> Education
+            </button>
+          </div>
+
+          <!-- Work tab -->
+          <div id="work" class="qual-content qual-active">
+            <div class="relative pl-8">
+              <div class="absolute left-0 top-0 bottom-0 w-px bg-dark-border"></div>
+
+              <div class="relative mb-10">
+                <div class="exp-dot"></div>
+                <div class="bg-dark-card border border-dark-border rounded-2xl p-6 hover:border-gold/30 transition-colors">
+                  <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+                    <h3 class="font-display font-semibold text-lg">Data Science & ML Intern</h3>
+                    <span class="text-[11px] bg-gold/10 text-gold border border-gold/20 px-3 py-1 rounded-full">Mar 2026 — Present</span>
+                  </div>
+                  <a href="https://www.uniconverge.com" target="_blank" class="text-gold text-sm hover:underline">UniConverge Technologies Pvt. Ltd. · Virtual</a>
+                  <p class="text-ivory/50 text-sm leading-relaxed mt-3">
+                    Developing and evaluating ML models using Python (scikit-learn, pandas, NumPy). Conducting EDA and building interactive dashboards. Collaborating on cross-functional data-driven solutions.
+                  </p>
+                  <div class="flex flex-wrap gap-1.5 mt-4">
+                    <span class="pill-tag">Python</span><span class="pill-tag">scikit-learn</span>
+                    <span class="pill-tag">pandas</span><span class="pill-tag">NumPy</span><span class="pill-tag">EDA</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="relative mb-10">
+                <div class="exp-dot"></div>
+                <div class="bg-dark-card border border-dark-border rounded-2xl p-6 hover:border-gold/30 transition-colors">
+                  <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+                    <h3 class="font-display font-semibold text-lg">Data Science & Analytics Fellow</h3>
+                    <span class="text-[11px] bg-gold/10 text-gold border border-gold/20 px-3 py-1 rounded-full">2025 — Apr 2026</span>
+                  </div>
+                  <p class="text-gold text-sm">Future Interns</p>
+                  <p class="text-ivory/50 text-sm leading-relaxed mt-3">
+                    Fellowship covering data science fundamentals, statistical analysis, and analytical storytelling. Produced weekly progress reports on probability, data wrangling, and EDA.
+                  </p>
+                  <div class="flex flex-wrap gap-1.5 mt-4">
+                    <span class="pill-tag">Data Science</span><span class="pill-tag">Statistics</span>
+                    <span class="pill-tag">EDA</span><span class="pill-tag">Data Wrangling</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="relative mb-10">
+                <div class="exp-dot"></div>
+                <div class="bg-dark-card border border-dark-border rounded-2xl p-6 hover:border-gold/30 transition-colors">
+                  <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+                    <h3 class="font-display font-semibold text-lg">Meta × Scaler OpenEnv Hackathon</h3>
+                    <span class="text-[11px] bg-green-500/10 text-green-400 border border-green-500/20 px-3 py-1 rounded-full">Round 1 ✓ Accepted</span>
+                  </div>
+                  <p class="text-gold text-sm">Solo Participant</p>
+                  <p class="text-ivory/50 text-sm leading-relaxed mt-3">
+                    Built and deployed an OpenEnv-compliant reinforcement learning environment for AI data-cleaning agents. Implemented typed Pydantic models, FastAPI server with 7 endpoints, and containerized with Docker.
+                  </p>
+                  <div class="flex flex-wrap gap-1.5 mt-4">
+                    <span class="pill-tag">Python</span><span class="pill-tag">RL</span>
+                    <span class="pill-tag">FastAPI</span><span class="pill-tag">Docker</span><span class="pill-tag">Pydantic</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Education tab -->
+          <div id="education" class="qual-content">
+            <div class="relative pl-8">
+              <div class="absolute left-0 top-0 bottom-0 w-px bg-dark-border"></div>
+
+              <div class="relative mb-10">
+                <div class="exp-dot"></div>
+                <div class="bg-dark-card border border-dark-border rounded-2xl p-6 hover:border-gold/30 transition-colors">
+                  <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+                    <h3 class="font-display font-semibold text-lg">M.Sc, Applied Data Science</h3>
+                    <span class="text-[11px] bg-gold/10 text-gold border border-gold/20 px-3 py-1 rounded-full">2025 – 2027</span>
+                  </div>
+                  <a href="https://www.srmist.edu.in/" target="_blank" class="text-gold text-sm hover:underline">SRM Institute of Science and Technology, Chennai</a>
+                  <p class="text-ivory/50 text-xs mt-1">CGPA: 8.75 / 10</p>
+                  <p class="text-ivory/50 text-sm leading-relaxed mt-3">
+                    Graduate program in applied ML, statistical modeling, NLP, reinforcement learning, and data analytics. Active hackathon participant and open-source contributor.
+                  </p>
+                </div>
+              </div>
+
+              <div class="relative mb-10">
+                <div class="exp-dot"></div>
+                <div class="bg-dark-card border border-dark-border rounded-2xl p-6 hover:border-gold/30 transition-colors">
+                  <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+                    <h3 class="font-display font-semibold text-lg">B.Sc, Mathematics</h3>
+                    <span class="text-[11px] bg-gold/10 text-gold border border-gold/20 px-3 py-1 rounded-full">2022 – 2025</span>
+                  </div>
+                  <p class="text-gold text-sm">Arignar Anna Government Arts College, Cheyyar</p>
+                  <p class="text-ivory/50 text-xs mt-1">CGPA: 7.06 / 10</p>
+                  <p class="text-ivory/50 text-sm leading-relaxed mt-3">
+                    Undergraduate degree providing strong analytical and quantitative foundations in mathematics, statistics, and problem-solving.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ═══════════ PROJECTS ═══════════ -->
+      <section id="portfolio" class="py-20 px-4 section-fade">
+        <div class="max-w-5xl mx-auto">
+          <p class="text-gold text-sm font-medium tracking-widest uppercase mb-2">What I've built</p>
+          <h2 class="font-display font-bold text-4xl md:text-5xl mb-14">Projects</h2>
+
+          <div class="grid md:grid-cols-2 gap-6">
+
+            <!-- Project 1 -->
+            <div class="proj-card bg-dark-card border border-dark-border rounded-2xl overflow-hidden group">
+              <div class="relative h-44 overflow-hidden bg-[#101010] flex items-center justify-center">
+                <!-- Decorative visual in lieu of image -->
+                <div class="absolute inset-0 bg-gradient-to-br from-gold/10 to-transparent"></div>
+                <div class="relative text-center">
+                  <div class="text-4xl mb-2">🤖</div>
+                  <span class="text-[10px] font-bold tracking-[0.18em] uppercase bg-gold/15 text-gold border border-gold/30 px-3 py-1 rounded-full backdrop-blur-sm">Hackathon · RL</span>
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-dark-card via-transparent to-transparent opacity-60"></div>
+                <span class="absolute top-4 left-4 text-[10px] font-bold tracking-[0.18em] uppercase bg-green-500/15 text-green-400 border border-green-500/30 px-3 py-1 rounded-full">R1 Accepted ✓</span>
+              </div>
+              <div class="p-6">
+                <p class="text-ivory/40 text-[11px] tracking-widest uppercase mb-1.5 font-medium">001</p>
+                <h3 class="font-display font-bold text-xl mb-2 group-hover:text-gold transition-colors">
+                  Data Cleaning OpenEnv Environment
+                </h3>
+                <p class="text-ivory/50 text-sm leading-relaxed mb-5">
+                  OpenEnv-compliant RL environment where AI agents learn to clean messy datasets. Implements typed Pydantic models, step/reset/state API, 3 difficulty-graded tasks, and a FastAPI server with 7 endpoints. Containerized with Docker, deployed to Hugging Face Spaces.
+                </p>
+                <div class="flex flex-wrap gap-1.5 mb-5">
+                  <span class="pill-tag">Python</span><span class="pill-tag">FastAPI</span>
+                  <span class="pill-tag">Pydantic</span><span class="pill-tag">Docker</span>
+                  <span class="pill-tag">HF Spaces</span><span class="pill-tag">OpenAI API</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <a href="https://huggingface.co/spaces/Surendhar4518/data-cleaning-env" target="_blank"
+                     class="flex-1 text-center text-sm font-semibold border border-gold/40 text-gold hover:bg-gold hover:text-dark py-2 rounded-xl transition-all">
+                    HF Spaces ↗
+                  </a>
+                  <a href="https://github.com/Surendhar0309" target="_blank"
+                     class="w-9 h-9 rounded-full border border-dark-border flex items-center justify-center text-ivory/40 hover:border-gold hover:text-gold transition-all shrink-0">
+                    <i class="uil uil-github-alt text-base"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Placeholder card — more coming -->
+            <div class="proj-card bg-dark-card border border-dashed border-dark-border rounded-2xl flex flex-col items-center justify-center min-h-[300px] p-10 text-center gap-4 group hover:border-gold/30">
+              <div class="w-14 h-14 rounded-2xl border border-dark-border flex items-center justify-center text-2xl group-hover:border-gold/40 transition-colors">📊</div>
+              <div>
+                <p class="font-display font-semibold text-ivory/40 mb-1">More projects coming</p>
+                <p class="text-ivory/25 text-sm">Check GitHub for latest work</p>
+              </div>
+              <a href="https://github.com/Surendhar0309" target="_blank"
+                 class="text-sm text-gold border border-gold/30 hover:bg-gold hover:text-dark px-5 py-2 rounded-xl transition-all font-medium">
+                View GitHub ↗
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ CERTIFICATIONS ═══════════ -->
+      <section id="certifications" class="py-20 px-4 section-fade">
+        <div class="max-w-5xl mx-auto">
+          <p class="text-gold text-sm font-medium tracking-widest uppercase mb-2">Credentials & learning</p>
+          <h2 class="font-display font-bold text-4xl md:text-5xl mb-14">Certifications</h2>
+
+          <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
+
+            <div class="cert-card bg-dark-card border border-dark-border rounded-2xl p-5">
+              <p class="text-gold text-[11px] tracking-widest uppercase font-semibold mb-3">Dec 2025</p>
+              <h3 class="font-display font-semibold text-base mb-1.5 leading-snug">Data Science Essentials with Python</h3>
+              <p class="text-ivory/40 text-xs flex items-center gap-1.5">
+                <i class="uil uil-award text-gold"></i> Cisco Networking Academy
+              </p>
+            </div>
+
+            <div class="cert-card bg-dark-card border border-dark-border rounded-2xl p-5">
+              <p class="text-gold text-[11px] tracking-widest uppercase font-semibold mb-3">Dec 2025 – Jan 2026</p>
+              <h3 class="font-display font-semibold text-base mb-1.5 leading-snug">Python 101 for Data Science</h3>
+              <p class="text-ivory/40 text-xs flex items-center gap-1.5">
+                <i class="uil uil-award text-gold"></i> IBM SkillsBuild
+              </p>
+            </div>
+
+            <div class="cert-card bg-dark-card border border-dark-border rounded-2xl p-5">
+              <p class="text-gold text-[11px] tracking-widest uppercase font-semibold mb-3">Nov – Dec 2025</p>
+              <h3 class="font-display font-semibold text-base mb-1.5 leading-snug">Python Essentials 1</h3>
+              <p class="text-ivory/40 text-xs flex items-center gap-1.5">
+                <i class="uil uil-award text-gold"></i> Cisco Networking Academy
+              </p>
+            </div>
+
+            <div class="cert-card bg-dark-card border border-dark-border rounded-2xl p-5">
+              <p class="text-gold text-[11px] tracking-widest uppercase font-semibold mb-3">Sep – Oct 2025</p>
+              <h3 class="font-display font-semibold text-base mb-1.5 leading-snug">Advanced Data Analysis & Visualization</h3>
+              <p class="text-ivory/40 text-xs flex items-center gap-1.5">
+                <i class="uil uil-award text-gold"></i> Naan Mudhulvan
+              </p>
+            </div>
+
+            <div class="cert-card bg-dark-card border border-dark-border rounded-2xl p-5">
+              <p class="text-gold text-[11px] tracking-widest uppercase font-semibold mb-3">Jan – Feb 2025</p>
+              <h3 class="font-display font-semibold text-base mb-1.5 leading-snug">Microsoft Office Essentials</h3>
+              <p class="text-ivory/40 text-xs flex items-center gap-1.5">
+                <i class="uil uil-award text-gold"></i> Naan Mudhulvan
+              </p>
+            </div>
+
+            <div class="cert-card bg-dark-card border border-dark-border rounded-2xl p-5">
+              <p class="text-gold text-[11px] tracking-widest uppercase font-semibold mb-3">Feb – Mar 2024</p>
+              <h3 class="font-display font-semibold text-base mb-1.5 leading-snug">Data Analysis Using Python</h3>
+              <p class="text-ivory/40 text-xs flex items-center gap-1.5">
+                <i class="uil uil-award text-gold"></i> Naan Mudhulvan
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ CONTACT ═══════════ -->
+      <section id="contact" class="py-20 px-4 section-fade">
+        <div class="max-w-5xl mx-auto">
+          <p class="text-gold text-sm font-medium tracking-widest uppercase mb-2">Get in touch</p>
+          <h2 class="font-display font-bold text-4xl md:text-5xl mb-14">Contact Me</h2>
+
+          <div class="grid md:grid-cols-2 gap-12">
+
+            <!-- Info -->
+            <div class="space-y-6">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-dark-card border border-dark-border rounded-xl flex items-center justify-center text-gold text-2xl shrink-0">
+                  <i class="uil uil-envelope"></i>
+                </div>
+                <div>
+                  <p class="font-display font-semibold text-sm text-ivory/50 uppercase tracking-wider mb-0.5">Email</p>
+                  <a href="mailto:ksurendhar95@gmail.com" class="font-medium hover:text-gold transition-colors">ksurendhar95@gmail.com</a>
+                </div>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-dark-card border border-dark-border rounded-xl flex items-center justify-center text-gold text-2xl shrink-0">
+                  <i class="uil uil-phone"></i>
+                </div>
+                <div>
+                  <p class="font-display font-semibold text-sm text-ivory/50 uppercase tracking-wider mb-0.5">Phone</p>
+                  <p class="font-medium">+91 8148954965</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-dark-card border border-dark-border rounded-xl flex items-center justify-center text-gold text-2xl shrink-0">
+                  <i class="uil uil-map-marker"></i>
+                </div>
+                <div>
+                  <p class="font-display font-semibold text-sm text-ivory/50 uppercase tracking-wider mb-0.5">Location</p>
+                  <p class="font-medium">Chennai, Tamil Nadu · Available remotely</p>
+                </div>
+              </div>
+
+              <!-- Social -->
+              <div class="pt-4 space-y-3">
+                <a href="https://linkedin.com/in/surendhar0309" target="_blank"
+                   class="flex items-center gap-3 text-ivory/60 hover:text-gold transition-colors text-sm font-medium">
+                  <i class="uil uil-linkedin-alt text-xl text-gold"></i> linkedin.com/in/surendhar0309
+                </a>
+                <a href="https://github.com/Surendhar0309" target="_blank"
+                   class="flex items-center gap-3 text-ivory/60 hover:text-gold transition-colors text-sm font-medium">
+                  <i class="uil uil-github-alt text-xl text-gold"></i> github.com/Surendhar0309
+                </a>
+                <a href="https://huggingface.co/Surendhar4518" target="_blank"
+                   class="flex items-center gap-3 text-ivory/60 hover:text-gold transition-colors text-sm font-medium">
+                  <span class="text-xl text-gold leading-none">🤗</span> huggingface.co/Surendhar4518
+                </a>
+              </div>
+
+              <!-- Quote -->
+              <div class="mt-4 border-l-2 border-gold pl-5">
+                <p class="text-ivory/50 italic text-sm leading-relaxed">
+                  "Open to ML engineering roles, research collaborations, internships, and interesting projects."
+                </p>
+              </div>
+            </div>
+
+            <!-- Form -->
+            <form action="mailto:ksurendhar95@gmail.com" method="POST" id="submit_form" class="space-y-4">
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label for="name" class="block text-ivory/50 text-xs uppercase tracking-wider mb-2">Name</label>
+                  <input type="text" id="name" name="name" required
+                    class="w-full bg-dark-card border border-dark-border rounded-xl px-4 py-3 text-ivory placeholder-ivory/30 focus:border-gold focus:outline-none transition-colors text-sm" />
+                </div>
+                <div>
+                  <label for="email" class="block text-ivory/50 text-xs uppercase tracking-wider mb-2">Email</label>
+                  <input type="email" id="email" name="email" required
+                    class="w-full bg-dark-card border border-dark-border rounded-xl px-4 py-3 text-ivory placeholder-ivory/30 focus:border-gold focus:outline-none transition-colors text-sm" />
+                </div>
+              </div>
+              <div>
+                <label for="subject" class="block text-ivory/50 text-xs uppercase tracking-wider mb-2">Subject</label>
+                <input type="text" id="subject" name="subject" required
+                  class="w-full bg-dark-card border border-dark-border rounded-xl px-4 py-3 text-ivory placeholder-ivory/30 focus:border-gold focus:outline-none transition-colors text-sm" />
+              </div>
+              <div>
+                <label for="message" class="block text-ivory/50 text-xs uppercase tracking-wider mb-2">Message</label>
+                <textarea id="message" name="message" rows="5" required
+                  class="w-full bg-dark-card border border-dark-border rounded-xl px-4 py-3 text-ivory placeholder-ivory/30 focus:border-gold focus:outline-none transition-colors text-sm resize-none"></textarea>
+              </div>
+              <button type="submit" id="check"
+                class="w-full bg-gold hover:bg-gold-dark text-dark font-semibold py-3 px-6 rounded-xl transition-colors flex items-center justify-center gap-2">
+                Send Message <i class="uil uil-message text-lg"></i>
+              </button>
+            </form>
+
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer class="bg-ivory py-10 px-4">
+      <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+        <div>
+          <h2 class="font-display font-bold text-dark text-2xl">Surendhar V</h2>
+          <p class="text-dark/60 text-sm">Data Science & ML · SRM IST Chennai</p>
+        </div>
+        <ul class="flex gap-6 text-dark/70 text-sm font-medium">
+          <li><a href="#skills"         class="hover:text-gold transition-colors">Skills</a></li>
+          <li><a href="#portfolio"      class="hover:text-gold transition-colors">Projects</a></li>
+          <li><a href="#certifications" class="hover:text-gold transition-colors">Certs</a></li>
+          <li><a href="#contact"        class="hover:text-gold transition-colors">Contact</a></li>
+        </ul>
+        <p class="text-dark/40 text-xs">© Surendhar V. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Scroll up -->
+    <a href="#" id="scroll-up"
+       class="fixed right-4 bottom-20 w-10 h-10 bg-gold rounded-lg flex items-center justify-center text-dark z-40 hover:bg-gold-dark transition-all">
+      <i class="uil uil-arrow-up text-xl"></i>
+    </a>
+
+    <!-- ═══════════ SCRIPTS ═══════════ -->
+    <script>
+      // Nav toggle
+      const navMenu   = document.getElementById("nav-menu");
+      const navToggle = document.getElementById("nav-toggle");
+      const navClose  = document.getElementById("nav-close");
+      navToggle?.addEventListener("click", () => navMenu.classList.add("show-menu"));
+      navClose?.addEventListener("click",  () => navMenu.classList.remove("show-menu"));
+      document.querySelectorAll(".nav__link").forEach(l =>
+        l.addEventListener("click", () => navMenu.classList.remove("show-menu"))
+      );
+
+      // Skills accordion
+      document.querySelectorAll(".skills__header").forEach(header => {
+        header.addEventListener("click", () => {
+          const parent = header.parentNode;
+          parent.classList.toggle("skills-open");
+          parent.classList.toggle("skills-close");
+        });
+      });
+
+      // Qualification tabs
+      document.querySelectorAll(".qual-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const target = btn.dataset.target;
+          document.querySelectorAll(".qual-btn").forEach(b => b.classList.remove("qual-active", "text-gold"));
+          document.querySelectorAll(".qual-content").forEach(c => c.classList.remove("qual-active"));
+          btn.classList.add("qual-active");
+          document.getElementById(target)?.classList.add("qual-active");
+        });
+      });
+
+      // Scroll events
+      window.addEventListener("scroll", () => {
+        const scrollUp = document.getElementById("scroll-up");
+        if (window.scrollY >= 560) scrollUp.classList.add("show-scroll");
+        else scrollUp.classList.remove("show-scroll");
+      });
+
+      // Active nav link on scroll
+      const sections = document.querySelectorAll("section[id]");
+      window.addEventListener("scroll", () => {
+        const scrollY = window.pageYOffset;
+        sections.forEach(sec => {
+          const top    = sec.offsetTop - 80;
+          const height = sec.offsetHeight;
+          const id     = sec.getAttribute("id");
+          const link   = document.querySelector(`.nav__link[href="#${id}"]`);
+          if (link) {
+            if (scrollY >= top && scrollY < top + height) link.classList.add("active-link");
+            else link.classList.remove("active-link");
+          }
+        });
+      });
+
+      // Section fade-in + skill bar animate
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add("visible");
+            // Animate skill bars when section becomes visible
+            e.target.querySelectorAll(".skill-fill").forEach(bar => {
+              bar.style.width = bar.style.getPropertyValue("--w") || getComputedStyle(bar).getPropertyValue("--w");
+            });
+          }
+        });
+      }, { threshold: 0.08 });
+      document.querySelectorAll(".section-fade").forEach(el => observer.observe(el));
+
+      // Form validation
+      document.getElementById("check")?.addEventListener("click", e => {
+        const form = document.getElementById("submit_form");
+        let ok = true;
+        form.querySelectorAll("[required]").forEach(i => { if (!i.value) ok = false; });
+        if (!ok) { e.preventDefault(); alert("Please fill all fields."); }
+      });
+    </script>
+  </body>
+</html>
